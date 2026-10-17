@@ -69,7 +69,7 @@ def gradient_descent(X_train, y_train , params, alpha, num_iterations):
         # residual error for each sample
         residuals = y_pred - y_train
         # compute cost (mean squared error)
-        cost = (1 / (2 * num_samples)) * np.sum(residuals**2)
+        #cost = (1 / (2 * num_samples)) * np.sum(residuals**2)
         # compute partial derivatives
         # dW shape: (num_features, 1), db: scalar
         dW = (1 / num_samples) * np.dot(X_train.T, residuals)
