@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 
 X, y = np.loadtxt('Linear Regression/data.csv', delimiter=',', skiprows=1, unpack=True)
 
+# ensure X is 2D - (number of samples, number of features)
+X = X.reshape(-1, 1)
+
 def display_dataset_graph():
     plt.figure(figsize=(8, 5))
     plt.scatter(X, y, color='blue', alpha=0.6, edgecolors='k', label='Data points')
@@ -13,7 +16,14 @@ def display_dataset_graph():
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.show()
 
+
 # split data into training and testing
+
+# shuffle data before splitting
+np.random.seed(42)
+indices = np.random.permutation(len(X))
+X = X[indices]
+y = y[indices]
 # 80% train, 20% test
 split_index = int(0.8 * len(X))
 
@@ -23,8 +33,8 @@ y_train = y[:split_index]
 X_test = X[split_index:] 
 y_test = y[split_index:] 
 
-#print(f"Training samples: {len(X_train)}") #560
-#print(f"Testing samples:  {len(X_test)}") #140
+#print(f"training samples: {len(X_train)}") #560
+#print(f"testing samples: {len(X_test)}") #140
 
 def initialise_params(X_train):
     """
