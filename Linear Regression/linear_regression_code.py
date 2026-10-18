@@ -1,4 +1,3 @@
-import csv
 import numpy as np
 import matplotlib.pyplot as plt 
 
@@ -16,9 +15,7 @@ def display_dataset_graph():
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.show()
 
-
 # split data into training and testing
-
 # shuffle data before splitting
 np.random.seed(42)
 indices = np.random.permutation(len(X))
@@ -84,7 +81,7 @@ def gradient_descent(X_train, y_train , params, alpha, num_iterations):
     
     return params
 
-def train(X_train, y_train, alpha=0.01, num_iterations=1000):
+def train(X_train, y_train, alpha=0.0001, num_iterations=1000):
     """
     output
     params: dictionary containing optimised coefficients
@@ -108,3 +105,16 @@ def predict(X_test, params):
 
 params = train(X_train, y_train) # train model
 y_preds = predict(X_test, params) # inference
+
+# testing
+print("weights:", params['W'])
+print("bias:", params['b'])
+
+# visualise predictions
+plt.scatter(X_test[:, 0], y_test, label='Actual data')
+sort_idx = np.argsort(X_test[:, 0])
+plt.plot(X_test[sort_idx, 0], y_preds[sort_idx], color='red', label='Regression line')
+plt.xlabel('X')
+plt.ylabel('y')
+plt.legend()
+plt.show()
