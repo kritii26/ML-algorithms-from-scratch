@@ -2,4 +2,4 @@
 A collection of ML algorithms I have implemented from scratch to develop a deeper understanding of their mathematics, optimisation, and practical behaviour.
 
 ## Completed Algorithms
-- [Linear Regression] (
+- [Linear Regression](https://github.com/kritii26/ML-algorithms-from-scratch/tree/main/Linear%20Regression)
