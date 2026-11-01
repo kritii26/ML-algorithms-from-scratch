@@ -39,7 +39,7 @@ def initialise_params(X_train):
     input
     X: training data
     output
-    params: dictionary containing optimised coefficients
+    params: dictionary containing initialised coefficients
     """
     params = {}
     _, num_features = X_train.shape
@@ -94,7 +94,7 @@ def predict(X_test, params):
     """
     inputs
     X: unseen data
-    params: dictionary contianing optimised weights from training
+    params: dictionary containing optimised weights from training
 
     outputs
     y_preds: predictions of model
