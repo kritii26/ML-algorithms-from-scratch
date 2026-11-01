@@ -1,3 +1,8 @@
+import numpy as np
+import matplotlib.pyplot as plt 
+
+dataset = np.loadtxt('Linear Regression/data.csv', delimiter=',', skiprows=1, unpack=True)
+
 class LinearRegression:
 
   def __init__(self, dataset):
@@ -87,16 +92,12 @@ class LinearRegression:
 
   def visualise_predictions(self):
     y_preds = self.predict(self.X_test)
-    plt.scatter(self.y_test, y_preds)
-
-    min_val = min(self.y_test.min(), y_preds.min())
-    max_val = max(self.y_test.max(), y_preds.max())
-
-    plt.plot([min_val, max_val], [min_val, max_val], color='red')
-
-    plt.xlabel("Actual values")
-    plt.ylabel("Predicted values")
-    plt.title("Actual vs Predicted Values")
+    plt.scatter(self.X_test[:, 0], self.y_test, label='Actual data')
+    sort_idx = np.argsort(self.X_test[:, 0])
+    plt.plot(self.X_test[sort_idx, 0], y_preds[sort_idx], color='red', label='Regression line')
+    plt.xlabel('X')
+    plt.ylabel('y')
+    plt.legend()
     plt.show()
 
 def linear_regression(dataset):
